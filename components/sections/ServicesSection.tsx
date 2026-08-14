@@ -5,6 +5,7 @@ import ServiceCard from "@/components/services/ServiceCard";
 // Import local images from assets/images/home
 import servicesBgInside from "@/assets/images/home/services-bg-inside.jpg";
 import serviceBgUp from "@/assets/images/home/service-bg-up.png";
+import serviceBgUpMobile from "@/assets/images/home/service-bg-up-mobile.png";
 import uiUxImage from "@/assets/images/home/ui-ux-image.png";
 import webDesignImage from "@/assets/images/home/web-design-image.png";
 import landingPageImage from "@/assets/images/home/landing-page-image.png";
@@ -37,7 +38,7 @@ const SERVICES_DATA: ServiceCardType[] = [
 
 export default function ServicesSection() {
   return (
-    <section className="relative z-0 -mx-3 md:-mx-17.5 min-h-screen py-24 overflow-hidden rounded-[2.5rem] lg:rounded-[3rem font-urbanist">
+    <section className="relative z-0 -mx-3 md:-mx-17.5 min-h-screen -mt-5 sm:mt-0 pt-10 pb-16 md:py-24 overflow-hidden rounded-[16px] sm:rounded-[2.5rem] lg:rounded-[3rem] font-urbanist">
       
       {/* --- BACKGROUND LAYERS --- */}
       {/* 1. Base Wavy Texture */}
@@ -49,20 +50,29 @@ export default function ServicesSection() {
         priority
       />
 
-      {/* 2. Floating 3D Shapes (Using mix-blend-screen to remove black background) */}
+      {/* 2. Floating 3D Shapes (Desktop) */}
       <Image
         src={serviceBgUp}
         alt="Floating 3D orange shapes"
         fill
-        className="object-cover object-center mix-blend-screen opacity-90 -z-10"
+        className="hidden sm:block object-cover object-center mix-blend-screen opacity-90 -z-10"
+        priority
+      />
+
+      {/* 2. Floating 3D Shapes (Mobile) */}
+      <Image
+        src={serviceBgUpMobile}
+        alt="Floating 3D orange shapes"
+        fill
+        className="block sm:hidden object-contain object-center -z-10"
         priority
       />
 
       {/* --- FOREGROUND CONTENT --- */}
-      <div className="relative z-10 w-full px-4 md:px-12 lg:px-20">
+      <div className="relative z-10 w-full px-0 md:px-12 lg:px-20">
         
         {/* Header Row */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-16">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-16 px-4 md:px-0">
           <h2 className="text-4xl md:text-5xl lg:text-[56px] font-bold text-white tracking-tight">
             My <span className="text-brand-orange">Services</span>
           </h2>
@@ -72,16 +82,17 @@ export default function ServicesSection() {
           </p>
         </div>
 
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        {/* Services Grid (Horizontal Scroll on Mobile, Grid on Desktop) */}
+        <div className="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 overflow-x-auto md:overflow-x-visible snap-x snap-mandatory scrollbar-none px-4 md:px-0 pb-4">
           {SERVICES_DATA.map((service) => (
-            <ServiceCard
-              key={service.id}
-              id={service.id}
-              title={service.title}
-              imageSrc={service.imageSrc}
-              serviceIcon={serviceIcon}
-            />
+            <div key={service.id} className="w-[85vw] md:w-auto flex-shrink-0 snap-start">
+              <ServiceCard
+                id={service.id}
+                title={service.title}
+                imageSrc={service.imageSrc}
+                serviceIcon={serviceIcon}
+              />
+            </div>
           ))}
         </div>
 
@@ -96,4 +107,3 @@ export default function ServicesSection() {
     </section>
   );
 }
-
