@@ -43,6 +43,7 @@
   --font-sans: var(--font-geist-sans), 'Outfit', 'Inter', sans-serif;
   --font-mono: var(--font-geist-mono), 'JetBrains Mono', monospace;
   --font-urbanist: var(--font-urbanist), sans-serif;
+  --font-lufga: 'Lufga', var(--font-urbanist), sans-serif;
   --navbar-height: 80px;
 
   /* Custom Border Radii */
