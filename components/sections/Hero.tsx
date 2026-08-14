@@ -4,11 +4,12 @@ import Image from "next/image";
 import { Quote, Star } from "lucide-react";
 import sparkleTop from "@/assets/icons/home/sparkle-top.svg";
 import sparkleLeft from "@/assets/icons/home/sparkle-left.svg";
+import sparkleLeftMobile from "@/assets/icons/home/sparkle-left-mobile.svg";
 import jennyPortrait from "@/assets/images/home/jenny-portrait.png";
 
 export default function Hero() {
   return (
-    <section className="relative w-full mx-auto lg:px-0 pt-32 lg:pt-40 pb-0 flex flex-col items-center overflow-hidden font-urbanist">
+    <section className="relative pt-32 lg:pt-40 pb-0 flex flex-col items-center overflow-hidden font-urbanist">
 
       {/* TYPOGRAPHY SECTION (z-10 so the image can overlap it) */}
       <div className="text-center z-10 relative flex flex-col items-center">
@@ -35,7 +36,19 @@ export default function Hero() {
           <span className="relative inline-block mt-2">
             Product Designer
 
-            <div className="absolute -left-6 -bottom-4 md:-left-16 md:-bottom-10 w-9 h-9 md:w-18 md:h-18.75 block">
+            {/* Mobile Left Sparkle */}
+            <div className="absolute -left-7 -bottom-6 w-9 h-9 block md:hidden">
+              <Image
+                src={sparkleLeftMobile}
+                alt="Decorative sparkle"
+                fill
+                className="object-contain"
+                aria-hidden="true"
+              />
+            </div>
+
+            {/* Tablet/Desktop Left Sparkle */}
+            <div className="absolute md:-left-16 md:-bottom-10 md:w-18 md:h-18.75 hidden md:block">
               <Image
                 src={sparkleLeft}
                 alt="Decorative sparkle"
@@ -52,7 +65,7 @@ export default function Hero() {
       <div className="relative w-full -mt-12 md:-mt-25 lg:-mt-45 flex justify-center items-end min-h-100 md:min-h-130 z-20">
 
         {/* Left Floating Testimonial */}
-        <div className="flex flex-col absolute left-4 lg:left-0 top-20 md:top-35 lg:top-[40%] w-[48%] md:w-[42%] max-w-45 lg:max-w-87.5 z-30">
+        <div className="flex flex-col absolute left-0 top-20 md:top-35 lg:top-[40%] w-[48%] md:w-[42%] max-w-45 lg:max-w-87.5 z-30">
           <Quote className="text-gray-700 w-5 h-5 md:w-7 md:h-7 lg:w-8 lg:h-8 xl:w-10 xl:h-10 mb-1 lg:mb-2 xl:mb-4 fill-[#344054]" strokeWidth={0} />
           <p className="text-gray-600 text-[12px] md:text-[13px] lg:text-[16px] xl:text-[20px] leading-relaxed lg:leading-relaxed font-medium font-urbanist tracking-[-0.015em]">
             Jenny&apos;s Exceptional product
@@ -62,7 +75,7 @@ export default function Hero() {
         </div>
 
         {/* Right Floating Experience */}
-        <div className="flex flex-col items-end absolute right-4 lg:right-0 top-20 md:top-35 lg:top-[40%] w-[42%] lg:w-auto z-30">
+        <div className="flex flex-col items-end absolute right-0 top-20 md:top-35 lg:top-[40%] w-[42%] lg:w-auto z-30">
           <div className="flex gap-0.5 lg:gap-1 mb-1 lg:mb-2">
             {[...Array(5)].map((_, i) => (
               <Star

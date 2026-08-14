@@ -34,7 +34,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col bg-white">
         <Navbar />
-        <main className="w-full max-w-360 mx-auto flex flex-col flex-1 px-4 md:px-17.5">
+        <main className="w-full max-w-360 mx-auto flex flex-col flex-1 px-3 md:px-17.5">
           {children}
         </main>
         <Footer />

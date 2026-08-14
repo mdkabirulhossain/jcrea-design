@@ -46,7 +46,7 @@ export default function Navbar() {
   const toggleMenu = () => setIsOpen((prev) => !prev);
 
   return (
-    <header className="fixed top-6 left-1/2 -translate-x-1/2 w-full max-w-360 z-50 px-4 md:px-17.5 flex justify-center">
+    <header className="fixed top-6 left-1/2 -translate-x-1/2 w-full max-w-360 z-50 px-3 md:px-17.5 flex justify-center">
       {/* 
         DESKTOP NAVIGATION
         Visible on md and up. Logo centered between links. 
