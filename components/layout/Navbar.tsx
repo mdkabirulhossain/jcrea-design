@@ -4,7 +4,8 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import logoIcon from "@/assets/icons/logo-jc.svg";
+import logoDesktop from "@/assets/icons/logo-jc-dekstop.svg";
+import logoMobile from "@/assets/icons/logo-jc-mobile.svg";
 import MobileNavbar from "./MobileNavbar";
 import MobileMenuPanel from "./MobileMenuPanel";
 
@@ -22,20 +23,28 @@ export const RIGHT_LINKS = [
 
 export const ALL_LINKS = [...LEFT_LINKS, ...RIGHT_LINKS];
 
-// Reusable Logo Component using assets/icons/logo-jc.svg
 export const Logo = () => (
-  <Link href="/" className="flex items-center gap-2 z-50">
-    <Image
-      src={logoIcon}
-      alt="JC Logo"
-      width={32}
-      height={32}
-      className="w-8 h-8"
-      priority
-    />
-    <span className="text-white font-bold tracking-widest text-sm uppercase font-sans">
-      Jcrea
-    </span>
+  <Link href="/" className="flex items-center z-50">
+    {/* Desktop Logo */}
+    <div className="hidden md:block relative w-32 h-9 lg:w-53.5 lg:h-15 xl:w-75 xl:h-21.25">
+      <Image
+        src={logoDesktop}
+        alt="JC Logo"
+        fill
+        className="object-contain"
+        priority
+      />
+    </div>
+    {/* Mobile Logo */}
+    <div className="block md:hidden relative w-24.25 h-8">
+      <Image
+        src={logoMobile}
+        alt="JC Logo"
+        fill
+        className="object-contain"
+        priority
+      />
+    </div>
   </Link>
 );
 
@@ -52,45 +61,39 @@ export default function Navbar() {
         Visible on md and up. Logo centered between links. 
       */}
       <nav className="hidden md:flex items-center justify-between bg-brand-dark rounded-full p-2.5 w-full shadow-xl">
-        <div className="flex items-center gap-2 lg:gap-6 pl-2">
-          {LEFT_LINKS.map((link) => {
-            const isActive = pathname === link.href;
-            return (
-              <Link
-                key={link.name}
-                href={link.href}
-                className={`p-5 rounded-full text-[20px] font-semibold font-urbanist transition-colors duration-300 ${isActive
-                  ? "bg-brand-orange text-white"
-                  : "text-gray-300 hover:text-white"
-                  }`}
-              >
-                {link.name}
-              </Link>
-            );
-          })}
-        </div>
+        {LEFT_LINKS.map((link) => {
+          const isActive = pathname === link.href;
+          return (
+            <Link
+              key={link.name}
+              href={link.href}
+              className={`py-2 px-2.5 lg:py-3.5 lg:px-5 xl:py-5 xl:px-10 rounded-full text-[14px] lg:text-[17px] xl:text-[20px] font-semibold font-urbanist transition-colors duration-300 ${isActive
+                ? "bg-brand-orange text-white"
+                : "text-gray-300 hover:text-white"
+                }`}
+            >
+              {link.name}
+            </Link>
+          );
+        })}
 
-        <div className="px-4">
-          <Logo />
-        </div>
+        <Logo />
 
-        <div className="flex items-center gap-2 lg:gap-6 pr-2">
-          {RIGHT_LINKS.map((link) => {
-            const isActive = pathname === link.href;
-            return (
-              <Link
-                key={link.name}
-                href={link.href}
-                className={`p-5 rounded-full text-[20px] font-semibold font-urbanist transition-colors duration-300 ${isActive
-                  ? "bg-brand-orange text-white"
-                  : "text-gray-300 hover:text-white"
-                  }`}
-              >
-                {link.name}
-              </Link>
-            );
-          })}
-        </div>
+        {RIGHT_LINKS.map((link) => {
+          const isActive = pathname === link.href;
+          return (
+            <Link
+              key={link.name}
+              href={link.href}
+              className={`py-2 px-2.5 lg:py-3.5 lg:px-5 xl:py-5 xl:px-10 rounded-full text-[14px] lg:text-[17px] xl:text-[20px] font-semibold font-urbanist transition-colors duration-300 ${isActive
+                ? "bg-brand-orange text-white"
+                : "text-gray-300 hover:text-white"
+                }`}
+            >
+              {link.name}
+            </Link>
+          );
+        })}
       </nav>
 
       {/* 
