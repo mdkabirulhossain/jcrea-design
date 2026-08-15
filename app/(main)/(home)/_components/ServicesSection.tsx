@@ -1,6 +1,6 @@
 import React from "react";
 import Image, { StaticImageData } from "next/image";
-import ServiceCard from "@/components/services/ServiceCard";
+import ServiceCard from "./ServiceCard";
 
 // Import local images from assets/images/home
 import servicesBgInside from "@/assets/images/home/services-bg-inside.jpg";
