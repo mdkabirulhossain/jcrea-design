@@ -10,8 +10,7 @@ import jennyPortrait from "@/assets/images/home/jenny-portrait.png";
 export default function Hero() {
   return (
     <section className="relative pt-32 lg:pt-40 pb-0 flex flex-col items-center overflow-hidden font-urbanist">
-
-      {/* TYPOGRAPHY SECTION (z-10 so the image can overlap it) */}
+      
       <div className="text-center z-10 relative flex flex-col items-center">
 
         {/* Hello! Badge */}
