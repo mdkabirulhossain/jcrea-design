@@ -6,6 +6,7 @@ import Image, { StaticImageData } from 'next/image';
 import { ArrowUpRight } from 'lucide-react';
 
 interface ServiceCardProps {
+  id?: string;
   title: string;
   imageSrc: StaticImageData;
   serviceIcon?: StaticImageData | string;
@@ -52,7 +53,7 @@ export default function ServiceCard({ title, imageSrc }: ServiceCardProps) {
 
         {/* Card Header */}
         <div className="relative z-10 pt-5 sm:pt-6 md:pt-8 px-5 sm:px-6 pb-2">
-          <h3 className="text-2xl sm:text-3xl md:text-[28px] lg:text-3xl xl:text-4xl font-semibold tracking-tight text-white/95">
+          <h3 className="font-lufga font-medium text-[22px] sm:text-[25px] md:text-[28px] lg:text-[32px] tracking-[-0.015em] text-white/95">
             {title}
           </h3>
           {/* Full-width line spanning edge to edge */}

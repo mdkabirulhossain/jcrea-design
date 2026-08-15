@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 const urbanist = Urbanist({
   variable: "--font-urbanist",
   subsets: ["latin"],
-  weight: ["600"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {

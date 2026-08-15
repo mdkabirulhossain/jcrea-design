@@ -15,8 +15,8 @@ export default function Hero() {
       <div className="text-center z-10 relative flex flex-col items-center">
 
         {/* Hello! Badge */}
-        <div className="relative mb-6">
-          <div className="absolute -top-5 -right-8 w-8 h-8">
+        <div className="relative mb-6 mt-9">
+          <div className="absolute -top-5 -right-8 w-8 h-8 ">
             <Image
               src={sparkleTop}
               alt="Decorative sparkle"
