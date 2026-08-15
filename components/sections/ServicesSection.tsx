@@ -39,7 +39,7 @@ const SERVICES_DATA: ServiceCardType[] = [
 export default function ServicesSection() {
   return (
     <section className="relative z-0 -mx-3 md:-mx-17.5 min-h-screen -mt-5 sm:mt-0 pt-10 pb-16 md:py-24 overflow-hidden rounded-[16px] sm:rounded-[2.5rem] lg:rounded-[3rem] font-urbanist">
-      
+
       {/* --- BACKGROUND LAYERS --- */}
       {/* 1. Base Wavy Texture */}
       <Image
@@ -70,7 +70,7 @@ export default function ServicesSection() {
 
       {/* --- FOREGROUND CONTENT --- */}
       <div className="relative z-10 w-full px-0 md:px-12 lg:px-20">
-        
+
         {/* Header Row */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-16 px-4 md:px-0">
           <h2 className="text-4xl md:text-5xl lg:text-[56px] font-bold text-white tracking-tight">
@@ -82,10 +82,10 @@ export default function ServicesSection() {
           </p>
         </div>
 
-        {/* Services Grid (Horizontal Scroll on Mobile, Grid on Desktop) */}
-        <div className="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 overflow-x-auto md:overflow-x-visible snap-x snap-mandatory scrollbar-none px-4 md:px-0 pb-4">
+        {/* Services Grid (Horizontal Scroll on Mobile & iPad, Grid on Desktop) */}
+        <div className="flex xl:grid xl:grid-cols-3 gap-6 lg:gap-8 overflow-x-auto xl:overflow-x-visible snap-x snap-mandatory scrollbar-none px-4 md:px-6 xl:px-0 pb-4">
           {SERVICES_DATA.map((service) => (
-            <div key={service.id} className="w-[85vw] md:w-auto flex-shrink-0 snap-start">
+            <div key={service.id} className="w-[85vw] sm:w-[55vw] md:w-[44vw] lg:w-95 xl:w-auto shrink-0 snap-start">
               <ServiceCard
                 id={service.id}
                 title={service.title}

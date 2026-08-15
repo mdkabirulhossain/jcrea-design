@@ -1,241 +1,88 @@
-// "use client";
+'use client';
 
-// import React, { useEffect, useRef, useState } from "react";
-// import Image, { StaticImageData } from "next/image";
-
-// interface ServiceCardProps {
-//   id: string;
-//   title: string;
-//   imageSrc: StaticImageData;
-//   serviceIcon: any;
-// }
-
-// export default function ServiceCard({ id, title, imageSrc, serviceIcon }: ServiceCardProps) {
-//   const cardRef = useRef<HTMLDivElement>(null);
-//   const [dimensions, setDimensions] = useState({ width: 380, height: 520 });
-
-//   useEffect(() => {
-//     if (cardRef.current) {
-//       const resizeObserver = new ResizeObserver((entries) => {
-//         for (let entry of entries) {
-//           setDimensions({
-//             width: entry.contentRect.width || 380,
-//             height: entry.contentRect.height || 520,
-//           });
-//         }
-//       });
-//       resizeObserver.observe(cardRef.current);
-//       return () => resizeObserver.disconnect();
-//     }
-//   }, []);
-
-//   const w = dimensions.width;
-//   const h = dimensions.height;
-//   const r = 32; // Corner radius (rounded-[2rem])
-//   const R = 120; // Cutout radius at bottom right
-
-//   const pathData = `
-//     M ${r},0
-//     H ${w - r}
-//     A ${r},${r} 0 0,1 ${w},${r}
-//     V ${h - R}
-//     A ${R},${R} 0 0,0 ${w - R},${h}
-//     H ${r}
-//     A ${r},${r} 0 0,1 0,${h - r}
-//     V ${r}
-//     A ${r},${r} 0 0,1 ${r},0
-//     Z
-//   `;
-
-//   return (
-//     <div
-//       ref={cardRef}
-//       className="group relative flex flex-col h-[480px] lg:h-[520px] transition-all duration-500"
-//     >
-//       {/* SVG Background and Border Outline */}
-//       <svg
-//         className="absolute inset-0 w-full h-full pointer-events-none z-0"
-//         viewBox={`0 0 ${w} ${h}`}
-//         fill="none"
-//       >
-//         <defs>
-//           <clipPath id={`clip-${id}`}>
-//             <path d={pathData} />
-//           </clipPath>
-//         </defs>
-//         <path
-//           d={pathData}
-//           fill="rgba(255, 255, 255, 0.03)"
-//           stroke="rgba(255, 255, 255, 0.1)"
-//           strokeWidth="1.5"
-//           className="transition-colors duration-500 group-hover:fill-[rgba(255,255,255,0.06)] group-hover:stroke-[rgba(255,255,255,0.25)]"
-//         />
-//         {/* Horizontal divider under title (at y = 88px) */}
-//         <line
-//           x1="0"
-//           y1="88"
-//           x2={w}
-//           y2="88"
-//           stroke="rgba(255, 255, 255, 0.1)"
-//           strokeWidth="1.5"
-//           className="transition-colors duration-500 group-hover:stroke-[rgba(255,255,255,0.25)]"
-//         />
-//       </svg>
-
-//       {/* Clipped mockup content */}
-//       <div
-//         className="relative flex flex-col w-full h-full z-10"
-//         style={{ clipPath: `url(#clip-${id})` }}
-//       >
-//         {/* Title Header */}
-//         <div className="px-8 pt-8 pb-5 relative z-20">
-//           <h3 className="text-2xl lg:text-[28px] font-semibold text-white tracking-wide">
-//             {title}
-//           </h3>
-//         </div>
-
-//         {/* Mockup Image - Flush to bottom and sides */}
-//         <div className="relative flex-grow w-full flex items-end">
-//           <Image
-//             src={imageSrc}
-//             alt={`${title} showcase`}
-//             width={imageSrc.width}
-//             height={imageSrc.height}
-//             className="w-full h-auto transition-transform duration-500 group-hover:scale-[1.02]"
-//           />
-//         </div>
-//       </div>
-
-//       {/* Static Circle button using service-icon.svg */}
-//       <div
-//         className="absolute bottom-0 right-0 w-[84px] h-[84px] z-30 pointer-events-auto"
-//       >
-//         <Image
-//           src={serviceIcon}
-//           alt="Arrow icon"
-//           fill
-//           className="w-full h-full object-contain"
-//         />
-//       </div>
-//     </div>
-//   );
-// }
-
-"use client"
-
-import Image, { StaticImageData } from "next/image"
-import { useEffect, useRef, useState } from "react"
+import React from 'react';
+import Image, { StaticImageData } from 'next/image';
+import { ArrowUpRight } from 'lucide-react';
 
 interface ServiceCardProps {
-  id: string
-  title: string
-  imageSrc: StaticImageData
-  serviceIcon: StaticImageData | string
+  id: string;
+  title: string;
+  imageSrc: StaticImageData;
+  serviceIcon?: StaticImageData | string;
 }
 
-export default function ServiceCard({
-  id,
-  title,
-  imageSrc,
-  serviceIcon,
-}: ServiceCardProps) {
-  const cardRef = useRef<HTMLDivElement>(null)
-  const [size, setSize] = useState({ width: 380, height: 520 })
-
-  useEffect(() => {
-    if (!cardRef.current) return
-
-    const observer = new ResizeObserver(([entry]) => {
-      setSize({
-        width: entry.contentRect.width,
-        height: entry.contentRect.height,
-      })
-    })
-
-    observer.observe(cardRef.current)
-
-    return () => observer.disconnect()
-  }, [])
-
-  const { width: w, height: h } = size
-  const corner = 32
-  const cutout = 128
-
-  const path = `
-    M ${corner} 0
-    H ${w - corner}
-    A ${corner} ${corner} 0 0 1 ${w} ${corner}
-    V ${h - cutout}
-    C ${w} ${h - 70}, ${w - 70} ${h}, ${w - cutout} ${h}
-    H ${corner}
-    A ${corner} ${corner} 0 0 1 0 ${h - corner}
-    V ${corner}
-    A ${corner} ${corner} 0 0 1 ${corner} 0
-    Z
-  `
+export default function ServiceCard({ id, title, imageSrc }: ServiceCardProps) {
+  const maskId = `card-notch-mask-${id}`;
 
   return (
-    <div
-      ref={cardRef}
-      className="group relative h-[480px] w-full lg:h-[520px]"
-    >
-      <svg
-        className="pointer-events-none absolute inset-0 z-0 h-full w-full"
-        viewBox={`0 0 ${w} ${h}`}
-        preserveAspectRatio="none"
-      >
+    <div className="relative w-full bg-white/5 backdrop-blur-md rounded-[28px] sm:rounded-[36px] lg:rounded-[40px] shadow-2xl border border-[#9E9D9D] overflow-hidden select-none">
+
+      {/* SVG Mask Definition (unique per card via id) */}
+      <svg className="absolute w-0 h-0" aria-hidden="true">
         <defs>
-          <clipPath id={`service-card-clip-${id}`}>
-            <path d={path} />
-          </clipPath>
+          <mask id={maskId} maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox">
+            {/* White area = Visible part of the card */}
+            <rect x="0" y="0" width="1" height="1" fill="white" rx="0.08" ry="0.06" />
+            {/* Cutout area in the bottom-right for the circle notch */}
+            <path
+              d="
+                M 0.60 1
+                A 0.05 0.05 0 0 0 0.65 0.93
+                A 0.22 0.22 0 0 1 0.93 0.65
+                A 0.05 0.05 0 0 0 1 0.60
+                L 1 1 Z
+              "
+              fill="black"
+            />
+          </mask>
         </defs>
-
-        <path
-          d={path}
-          fill="rgba(255,255,255,0.04)"
-          stroke="rgba(255,255,255,0.18)"
-          strokeWidth="1.5"
-        />
-
-        <line
-          x1="0"
-          y1="88"
-          x2={w}
-          y2="88"
-          stroke="rgba(255,255,255,0.16)"
-          strokeWidth="1.5"
-        />
       </svg>
 
-      <div
-        className="relative z-10 flex h-full w-full flex-col overflow-hidden"
-        style={{ clipPath: `url(#service-card-clip-${id})` }}
-      >
-        <div className="px-8 pb-5 pt-8">
-          <h3 className="text-2xl font-semibold tracking-wide text-white lg:text-[28px]">
-            {title}
-          </h3>
-        </div>
+      {/* Background Radial Glow */}
+      <div className="absolute top-0 left-0 w-80 h-56 bg-linear-to-br from-red-600/40 via-orange-600/20 to-transparent blur-3xl pointer-events-none -translate-x-12 -translate-y-12" />
 
-        <div className="flex min-h-0 flex-1 items-end">
+      {/* Card Header */}
+      <div className="relative z-10 pt-5 sm:pt-6 md:pt-8 px-5 sm:px-6 pb-2">
+        <h3 className="text-2xl sm:text-3xl md:text-[28px] lg:text-3xl xl:text-4xl font-semibold tracking-tight text-white/95">
+          {title}
+        </h3>
+        {/* Full-width line spanning edge to edge */}
+        <div className="-mx-5 sm:-mx-6 h-px bg-[#9E9D9D] mt-4 sm:mt-5" />
+      </div>
+
+      {/* Image Display Wrapper — Flush to left, right, and bottom edges, with responsive top padding */}
+      <div className="relative w-full pt-4 sm:pt-6 md:pt-8 lg:pt-12">
+
+        {/* Card Image Container with SVG Mask Applied */}
+        <div
+          className="relative w-full overflow-hidden"
+          style={{
+            mask: `url(#${maskId})`,
+            WebkitMask: `url(#${maskId})`,
+          }}
+        >
           <Image
             src={imageSrc}
             alt={`${title} showcase`}
             width={imageSrc.width}
             height={imageSrc.height}
-            className="h-auto w-full transition-transform duration-500 group-hover:scale-[1.02]"
+            priority
+            className="w-full h-auto object-cover block"
           />
         </div>
+
       </div>
 
-      <div className="absolute bottom-0 right-0 z-20 h-[120px] w-[120px] translate-x-[8%] translate-y-[8%]">
-        <Image
-          src={serviceIcon}
-          alt=""
-          fill
-          className="object-contain"
-        />
+      {/* Floating Action Button — anchored to card, aligned with image corner */}
+      <div className="absolute bottom-0 right-0 w-25 h-25 sm:w-30 sm:h-30 lg:w-32.5 lg:h-32.5 flex items-center justify-center pointer-events-none">
+        <button
+          type="button"
+          aria-label={`View ${title} details`}
+          className="pointer-events-auto w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-[#1a2330] hover:bg-[#232f40] text-white rounded-full flex items-center justify-center shadow-2xl transition-all duration-300 hover:scale-105 active:scale-95 group border border-[#9E9D9D]/30"
+        >
+          <ArrowUpRight className="w-6 h-6 sm:w-8 sm:h-8 lg:w-9 lg:h-9 stroke-[2.2] transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+        </button>
       </div>
     </div>
-  )
+  );
 }
