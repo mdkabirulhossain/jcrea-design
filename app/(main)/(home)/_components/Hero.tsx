@@ -11,7 +11,7 @@ import jennyPortrait from "@/assets/images/home/jenny-portrait.png";
 export default function Hero() {
   return (
     <section className="relative pt-32 lg:pt-40 pb-0 flex flex-col items-center overflow-hidden font-urbanist">
-      
+
       <div className="text-center z-10 relative flex flex-col items-center">
 
         {/* Hello! Badge */}
@@ -89,12 +89,12 @@ export default function Hero() {
               />
             ))}
           </div>
-          <h3 className="text-[19.73px] md:text-2xl lg:text-[47px] font-bold text-brand-dark mt-0.5 lg:mt-1 font-urbanist tracking-[-0.015em]">10 Years</h3>
+          <h3 className="text-[19.73px] md:text-2xl lg:text-[47px] leading-none font-bold text-brand-dark mt-0.5 lg:mt-1 font-urbanist tracking-[-0.015em]">10 Years</h3>
           <p className="text-gray-900 font-normal font-urbanist lg:font-lufga text-[12px] md:text-[13px] lg:text-[16px] xl:text-[20px] leading-none tracking-[-0.015em]">Experience</p>
         </div>
 
         {/* Center Portrait & CSS-Only Background Arch */}
-        <div className="relative w-85 md:w-125 lg:w-159 flex items-end justify-center z-20 -translate-y-5 md:-translate-y-20 lg:translate-y-0">
+        <div className="relative w-85 md:w-125 lg:w-159 flex items-end justify-center z-20 -translate-y-10 md:-translate-y-20 lg:translate-y-0">
 
           {/* THE CSS ARCH */}
           <div className="absolute bottom-0 w-[92%] h-[65%] bg-orange-300 rounded-t-[999px] -z-10" />

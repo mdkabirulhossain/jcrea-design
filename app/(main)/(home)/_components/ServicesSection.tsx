@@ -39,7 +39,7 @@ const SERVICES_DATA: ServiceCardType[] = [
 
 export default function ServicesSection() {
   return (
-    <section className="relative z-0 -mx-3 md:-mx-17.5 md:min-h-screen -mt-5 sm:mt-0 pt-10 md:pt-29 pb-10 md:pb-13.75 mb-10 overflow-hidden rounded-[16px] sm:rounded-[2.5rem] lg:rounded-[3rem] font-urbanist">
+    <section className="relative z-0 -mx-3 md:-mx-17.5 -mt-10 md:-mt-20 lg:mt-0 pt-10 md:pt-29 pb-10 md:pb-13.75 mb-10 overflow-hidden rounded-[16px] sm:rounded-[2.5rem] lg:rounded-[3rem] font-urbanist">
 
       {/* --- BACKGROUND LAYERS --- */}
       {/* 1. Base Wavy Texture (Desktop) */}
