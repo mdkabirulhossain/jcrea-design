@@ -1,3 +1,6 @@
+import UnderDevelopmentModal from "@/components/ui/UnderDevelopmentModal";
+
 export default function ResumePage() {
-  return null;
+  return <UnderDevelopmentModal pageTitle="Resume" />;
 }
+
