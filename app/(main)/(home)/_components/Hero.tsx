@@ -1,10 +1,11 @@
 
 import React from "react";
 import Image from "next/image";
-import { Quote, Star } from "lucide-react";
+import { Star } from "lucide-react";
 import sparkleTop from "@/assets/icons/home/sparkle-top.svg";
 import sparkleLeft from "@/assets/icons/home/sparkle-left.svg";
 import sparkleLeftMobile from "@/assets/icons/home/sparkle-left-mobile.svg";
+import quoteUp from "@/assets/icons/home/quote-up.svg";
 import jennyPortrait from "@/assets/images/home/jenny-portrait.png";
 
 export default function Hero() {
@@ -65,8 +66,12 @@ export default function Hero() {
 
         {/* Left Floating Testimonial */}
         <div className="flex flex-col absolute left-0 top-20 md:top-35 lg:top-[40%] w-[48%] md:w-[42%] max-w-45 lg:max-w-87.5 z-30">
-          <Quote className="text-gray-700 w-5 h-5 md:w-7 md:h-7 lg:w-8 lg:h-8 xl:w-10 xl:h-10 mb-1 lg:mb-2 xl:mb-4 fill-[#344054]" strokeWidth={0} />
-          <p className="text-gray-600 text-[12px] md:text-[13px] lg:text-[16px] xl:text-[20px] leading-relaxed lg:leading-relaxed font-medium font-urbanist tracking-[-0.015em]">
+          <Image
+            src={quoteUp}
+            alt="Quote icon"
+            className="w-5 h-5 md:w-7 md:h-7 lg:w-8 lg:h-8 xl:w-10 xl:h-10 mb-1 lg:mb-2 xl:mb-4 object-contain"
+          />
+          <p className="text-gray-600 text-[12px] md:text-[13px] lg:text-[16px] xl:text-[20px] leading-none font-medium font-urbanist tracking-[-0.015em]">
             Jenny&apos;s Exceptional product
             <span className="lg:hidden"><br />design ensure our website&apos;s<br />success. Highly Recommended</span>
             <span className="hidden lg:inline"> design<br />ensure our website&apos;s success.<br />Highly Recommended</span>
@@ -85,7 +90,7 @@ export default function Hero() {
             ))}
           </div>
           <h3 className="text-[19.73px] md:text-2xl lg:text-[47px] font-bold text-brand-dark mt-0.5 lg:mt-1 font-urbanist tracking-[-0.015em]">10 Years</h3>
-          <p className="text-gray-900 font-normal font-urbanist lg:font-lufga text-[10.62px] md:text-xs lg:text-lg tracking-[-0.015em]">Experience</p>
+          <p className="text-gray-900 font-normal font-urbanist lg:font-lufga text-[12px] md:text-[13px] lg:text-[16px] xl:text-[20px] leading-none tracking-[-0.015em]">Experience</p>
         </div>
 
         {/* Center Portrait & CSS-Only Background Arch */}
