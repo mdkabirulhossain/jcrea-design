@@ -1,10 +1,5 @@
 # Jcrea — Product Designer Portfolio (Pillar 1 UI Challenge)
 
-[![Next.js](https://img.shields.io/badge/Next.js-16.3.1-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)](https://nextjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4.0-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
-[![Vercel Status](https://img.shields.io/badge/Deployment-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://jcrea-design.vercel.app/)
-
 > **Technical Assessment Submission — React Frontend Engineer (Pillar 1: Design Test)**  
 > A pixel-accurate, fully responsive Next.js App Router implementation of the Figma portfolio interface for Jenny (Product Designer).
 
